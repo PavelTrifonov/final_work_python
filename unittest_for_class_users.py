@@ -4,13 +4,14 @@ import unittest
 
 
 class TestCaseName(unittest.TestCase):
-    student = St("Т", "subjects.csv")
-    student.add_grade("Математика", 4)
-    student.add_test_score("Математика", 87)
-    student.add_test_score("Математика", 95)
-    student.add_grade("История", 5)
-    average_grade = student.get_average_grade()
-    average_test_score = student.get_average_test_score("Математика")
+    def setUp(self):
+        self.student = St("Т", "subjects.csv")
+        self.student.add_grade("Математика", 4)
+        self.student.add_test_score("Математика", 87)
+        self.student.add_test_score("Математика", 95)
+        self.student.add_grade("История", 5)
+        self.average_grade = self.student.get_average_grade()
+        self.average_test_score = self.student.get_average_test_score("Математика")
 
     def test_average_grade(self):
         self.assertEqual(self.average_grade, 4.5, msg='Неверный подсчет \
